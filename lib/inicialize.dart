@@ -6,8 +6,10 @@ class Inicialize extends StatelessWidget{
   Widget build(BuildContext context){
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Meu app",
-      theme: ThemeData(primaryColor: Colors.teal),
+      title: "Meu App",
+      theme: ThemeData(
+        primarySwatch: Colors.teal
+        ),
       home: const PrimeiraPagina(),
     );
   }

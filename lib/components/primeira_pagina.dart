@@ -1,38 +1,54 @@
 import 'package:flutter/material.dart';
 
-class PrimeiraPagina extends StatelessWidget{
+class PrimeiraPagina extends StatelessWidget {
   final Key? key;
   const PrimeiraPagina({this.key}) : super(key: key);
+
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Projetinho de clonar cartão")),
+      appBar: AppBar(
+        title: Text("Validador de CPF"),
+        centerTitle: true, //Centralizei o titulo do appbar
+      ),
       body: Center(
         child: Column(
           children: [
             const TextField(
               decoration: InputDecoration(
-                label: const Text("Número do cartão"),
-                hintText: "Informe o número do cartão",
+                label: const Text("Número do CPF"),
+                hintText: "Informe o CPF",
               ),
             ),
+            const SizedBox(
+              height: 15.0,
+            ),
             ElevatedButton(
-              onPressed: (){
-                showDialog(
-                 context: context,
-                 builder: (BuildContext context) {
-                   return AlertDialog(
-                    title: Text ("Resultado"),
-                    content: Text ("Cartão clonado"),
-                   );
-                 }
-                );
+              onPressed: () {
+                showAlertDialog(
+                    context: context,
+                    titulo: 'CPF informado',
+                    comentario: 'Seu CPF não é válido');
               },
-               child: const Text("Ok"),
-               )
+              child: const Text('OK'),
+            ),
           ],
         ),
       ),
     );
   }
+}
+
+Future showAlertDialog(
+    {required BuildContext context,
+    required String titulo,
+    required String comentario}) {
+  return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text(titulo),
+          content: Text(comentario),
+        );
+      });
 }
