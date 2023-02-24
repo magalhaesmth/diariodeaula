@@ -10,7 +10,7 @@ class Inicialize extends StatelessWidget{
       theme: ThemeData(
         primarySwatch: Colors.teal
         ),
-      home: const PrimeiraPagina(),
+      home: PrimeiraPagina(),
     );
   }
 }
