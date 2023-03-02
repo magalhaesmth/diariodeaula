@@ -4,7 +4,7 @@ class Home extends StatelessWidget {
   Home({Key? key}) : super(key: key);
   var campoCPF = TextEditingController();
 
-  String validar(String cpfCompleto) {
+  String validarCPF(String cpfCompleto) {
     if (!cpfCompleto.contains('.')) return 'CPF deve conter "."!';
     if (!cpfCompleto.contains('-')) return 'CPF deve conter "-"!';
     if (cpfCompleto.length != 14) return 'CPF deve conter 14 caracteres!';
@@ -85,7 +85,7 @@ class Home extends StatelessWidget {
             ElevatedButton(
               child: const Text('Verificar CPF'),
               onPressed: () {
-                var resultado = validar(campoCPF.text);
+                var resultado = validarCPF(campoCPF.text);
                 showDialog(
                     context: context,
                     builder: (BuildContext context) {
