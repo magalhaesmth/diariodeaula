@@ -5,7 +5,7 @@ class Home extends StatelessWidget {
   var campoCPF = TextEditingController();
   var campoCNPJ = TextEditingController();
 
-/*
+
   String validarCPF(String cpfCompleto) {
     if (!cpfCompleto.contains('.')) return 'CPF deve conter "."!';
     if (!cpfCompleto.contains('-')) return 'CPF deve conter "-"!';
@@ -66,7 +66,7 @@ class Home extends StatelessWidget {
 
     return 'CPF Válido!';
 }
-*/
+
 //===================Validar CNPJ agora=======================
 
   String validarCNPJ(String cnpjCompleto) {
