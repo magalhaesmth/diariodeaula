@@ -42,7 +42,38 @@ class ValidarCPF {
     return primeiroDigito;
   }
 
-  validarSegundoDigito(String cpf){
-    
+  validarSegundoDigito(String cpf) {
+    List<int> listaCPF = gerarListaNumero(cpf);
+    listaCPF.add(validarPrimeiroDigito(cpf));
+
+    var peso = 11;
+    var digitoCalculado = 0;
+
+    for (var n in listaCPF) {
+      digitoCalculado += peso * n;
+      peso--;
+    }
+
+    var cpfsemMascara = cpf.replaceAll('.', '').replaceAll('-', '');
+    var digito = int.parse(cpfsemMascara.substring(10, 11));
+
+    digitoCalculado = 11 - (digitoCalculado % 11);
+    if (digito > 10) digitoCalculado = 0;
+
+    return digito;
+  }
+
+  bool validarDigitos(String cpf) {
+    var cpfsemMascara = cpf.replaceAll('.', '').replaceAll('-', '');
+    var primeiroDigito = int.parse(cpfsemMascara.substring(9, 10));
+    var segundoDigito = int.parse(cpfsemMascara.substring(10, 11));
+
+    if (primeiroDigito != validarPrimeiroDigito(cpf))
+      throw Exception('Primeiro digito incorreto');
+
+    if (segundoDigito != validarSegundoDigito(cpf))
+      throw Exception('Segundo digito incorreto');
+
+    return true;
   }
 }
