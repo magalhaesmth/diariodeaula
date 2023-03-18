@@ -12,7 +12,7 @@ import 'package:flutter_test/flutter_test.dart';
 void main() {
   test('CPF não pode ser vazio', () {
     String cpf = '';
-    var validarCPF = ValidarCPF();
+    var validarCPF = ValidarCPF(cpf);
     expect(() => validarCPF.ehVazio(cpf), throwsException);
   });
 
@@ -26,7 +26,7 @@ void main() {
 
   test('CPF deve possuir 14 caracteres', () {
     String cpf = '111.111.111-11';
-    var validarCPF = ValidarCPF();
+    var validarCPF = ValidarCPF(cpf);
     expect(validarCPF.ehTamanhoCorreto(cpf), true);
     cpf = '1111';
     expect(() => validarCPF.ehTamanhoCorreto(cpf), throwsException);
@@ -34,7 +34,7 @@ void main() {
 
   test('CPF deve possuir formato correto', () {
     String cpf = '111.111.111-11';
-    var validarCPF = ValidarCPF();
+    var validarCPF = ValidarCPF(cpf);
     expect(validarCPF.ehFormatoCorreto(cpf), true);
     cpf = '1111';
     expect(() => validarCPF.ehFormatoCorreto(cpf), throwsException);
@@ -42,7 +42,7 @@ void main() {
 
   test('CPF sem máscara e sem digito devem possuir 9 caracteres', () {
     String cpf = '123.456.789-10';
-    var validarCPF = ValidarCPF();
+    var validarCPF = ValidarCPF(cpf);
     List<int> listaNumerosCPF = validarCPF.gerarListaNumero(cpf);
     expect(listaNumerosCPF.length, 9);
     cpf = '1111';
@@ -50,7 +50,7 @@ void main() {
 
   test('Primeiro digito correto', () {
     String cpf = '123.456.789-10';
-    var validarCPF = ValidarCPF();
+    var validarCPF = ValidarCPF(cpf);
     expect(validarCPF.validarPrimeiroDigito(cpf), 1);
   });
 }

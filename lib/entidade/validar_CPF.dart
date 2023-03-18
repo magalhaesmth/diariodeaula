@@ -1,4 +1,10 @@
 class ValidarCPF {
+  ValidarCPF(String cpf){
+    ehVazio(cpf);
+    ehFormatoCorreto(cpf);
+    ehTamanhoCorreto(cpf);
+  }
+
   bool ehVazio(String cpf) {
     if (cpf.isEmpty) throw Exception('CPF não pode ser vazio!');
     return true;
